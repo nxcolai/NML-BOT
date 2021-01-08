@@ -1,0 +1,112 @@
+import discord
+from discord.ext import commands
+
+client = commands.Bot(command_prefix = 'nml.')
+
+@client.event
+async def on_ready():
+    await client.change_presence(activity = discord.Streaming(name = "send help lol", url = "https://www.twitch.tv/xNMLnml"))
+    print('Logged in as {0.user}'.format(client))
+
+
+
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+
+@client.command()
+async def monkey(ctx):
+    await ctx.send("<a:monkeylol:774709143859626046>")
+
+@client.command()
+async def fbi(ctx):
+    await ctx.send("<a:fbiOpenUp:774709147379826699>")
+
+@client.command()
+async def boom(ctx):
+    await ctx.channel.purge(limit=1)
+    await ctx.send("https://tenor.com/view/pass-the-bomb-csgo-gif-19760559")
+    await ctx.send("https://tenor.com/view/pass-the-bomb-csgo-gif-19760559")
+    await ctx.send("https://tenor.com/view/pass-the-bomb-csgo-gif-19760559")
+
+@client.command()
+async def spoon(ctx):
+    await ctx.channel.purge(limit=1)
+    await ctx.send("https://media.discordapp.net/attachments/504752614685147151/770336561577328690/SPOILER_1spoon.png")
+    await ctx.send("https://cdn.discordapp.com/attachments/504752614685147151/770336563489931274/SPOILER_12spoon-1.jpg")
+    await ctx.send("https://cdn.discordapp.com/attachments/504752614685147151/770336563686539274/SPOILER_13spoon.jpg")
+
+@client.command()
+async def spooon(ctx):
+    await ctx.channel.purge(limit=1)
+    await ctx.send("https://media.discordapp.net/attachments/504752614685147151/770336561577328690/SPOILER_1spoon.png")
+    await ctx.send("https://cdn.discordapp.com/attachments/504752614685147151/770336563489931274/SPOILER_12spoon-1.jpg")
+    await ctx.send("https://cdn.discordapp.com/attachments/504752614685147151/770336563489931274/SPOILER_12spoon-1.jpg")
+    await ctx.send("https://cdn.discordapp.com/attachments/504752614685147151/770336563686539274/SPOILER_13spoon.jpg")
+
+@client.command()
+async def mystik(ctx):
+    await ctx.send("https://tenor.com/view/el-huevo-the-egg-dog-doggo-cute-gif-17677022")
+
+@client.command()
+async def burrito(ctx):
+    await ctx.channel.purge(limit=1)
+    await ctx.send("https://tenor.com/view/burrito-pass-peepohappy-gif-18706235")
+    await ctx.send("https://tenor.com/view/burrito-pass-peepohappy-gif-18706235")
+    await ctx.send("https://tenor.com/view/burrito-pass-peepohappy-gif-18706235")
+
+@client.command()
+@commands.has_permissions(manage_messages=True)
+async def clear(ctx, amount=1):
+    await ctx.channel.purge(limit=amount+1)
+
+@client.command()
+async def whois(ctx, member : discord.Member):
+    embed = discord.Embed(title = member.name, description = member.mention , color = discord.Colour.purple())
+    embed.add_field(name = "ID", value = member.id, inline = True)
+    embed.set_thumbnail(url = member.avatar_url)
+    embed.set_footer(icon_url = ctx.author.avatar_url, text = f"Requested by {ctx.author.name}")
+    await ctx.send(embed = embed)
+
+@client.command()
+async def pfp(ctx, member : discord.Member):
+    await ctx.send('{}'.format(member.avatar_url))
+
+@client.command()
+@commands.has_permissions(manage_messages=True)
+async def pingg(ctx, member : discord.Member):
+    for i in range(0,9):
+        await ctx.channel.purge(limit=1)
+        await ctx.send(member.mention)
+    await ctx.channel.purge(limit=1)
+
+@client.command()
+async def gn(ctx, member : discord.Member):
+    for i in range(0,9):
+        await ctx.send("gn" + member.mention)
+
+@client.command()
+@commands.has_permissions(manage_messages=True)
+async def pinggg(ctx, member : discord.Member):
+    for i in range(0,9000):
+        await ctx.channel.purge(limit=1)
+        await ctx.send(member.mention)
+    await ctx.channel.purge(limit=1)
+
+@client.command()
+async def socials(ctx):
+    embed = discord.Embed(Title = "NML", description = "NML SOCIALS", color = discord.Colour. purple())
+    embed.add_field(name = "a", value = '[Twitter](https://twitter.com/itsnml)', inline = True)
+    embed.add_field(name="a", value='[Twitter](https://twitter.com/itsnml)', inline=False)
+    await ctx.send(embed = embed)
+
+@client.command()
+async def server(ctx):
+    embed = discord.Embed(Title="NMLserver", description="Join the main [server here.](https://discord.gg/2nrAJ9ZV8z)", color=discord.Colour.purple())
+    await ctx.send(embed=embed)
+
+
+
+client.run('token')
+
