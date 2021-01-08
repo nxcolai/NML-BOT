@@ -1,2 +1,2 @@
 # NML-BOT
-NML discord bot yes.
+DISCORD BOT??? POGGERS??? LOL!
